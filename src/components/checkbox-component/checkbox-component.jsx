@@ -5,7 +5,7 @@ import { Wrapper, Input, Label } from './checkbox-styles'
 const Checkbox = (props) => {
     return (
         <Wrapper>
-            <Label class="radio">
+            <Label className="radio">
                 <Input type="checkbox" />
                 <span>For rent by owner</span>
             </Label>

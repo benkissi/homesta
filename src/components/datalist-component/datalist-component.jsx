@@ -9,8 +9,8 @@ const DataList = (props) => {
             <Input type="text" list={props.uid} width={props.width} placeholder={props.placeholder} />
 
             <datalist id={props.uid}>
-                {props.data ? props.data.map(item =>
-                    <option key={item.index} value={item} />
+                {props.data ? props.data.map((item, index) =>
+                    <option key={index} value={item} />
                 ) : ""}
             </datalist>
         </div>

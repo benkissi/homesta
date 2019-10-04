@@ -5,7 +5,7 @@ import { SectionWrapper } from './section-styles'
 const Section = (props) => (
     <SectionWrapper setHeight={props.setHeight} fontColor={props.fontColor} bgColor={props.backgroundColor}>
         {props.header ? <div>
-            <h1>{props.title}</h1>
+            <h2>{props.title}</h2>
             <hr />
         </div> : ''}
         <div>
