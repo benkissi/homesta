@@ -13,7 +13,7 @@ const Home = () => {
             <Section fontColor='#252527' backgroundColor='#fff' setHeight='auto'>
                 <Search />
             </Section>
-            <Section fontColor='#252527' backgroundColor='#fff' setHeight='100vh'>
+            <Section fontColor='#252527' backgroundColor='#fff' setHeight='auto'>
                 <Featured />
             </Section>
         </div>

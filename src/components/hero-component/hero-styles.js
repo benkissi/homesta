@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Salutation = styled.div`
     display: flex;
     flex: 1;
-    justify-content: center;
+    /* justify-content: center; */
     z-index: 3;
     align-items: center;
 

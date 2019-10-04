@@ -14,7 +14,9 @@ export const Wrapper = styled.div`
     transition-property: box-shadow;
     
     :hover, :focus, :active {
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+        border: 0;
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .2);
+        cursor: pointer;
     }
 
     .card-image {

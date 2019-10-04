@@ -4,17 +4,17 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+
     > * {
-        margin: 3px;
+        margin: 5px;
     }
+`
+
+export const Input = styled.input`
     
 `
 
-export const SearchControls = styled.div`
-    display: flex;
-    justify-content: center;
-    > * {
-        margin: 10px;
-    }
-`
+export const Label = styled.label`
 
+`
