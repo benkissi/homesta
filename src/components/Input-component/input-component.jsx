@@ -1,11 +1,14 @@
 import React from 'react'
 
-import { InputField } from './input-styles'
+import { InputField, Wrapper } from './input-styles'
 
 
 const Input = (props) => {
     return (
-        < InputField {...props} />
+        <Wrapper width={props.width}>
+            <InputField {...props} />
+        </Wrapper>
+
     )
 }
 

@@ -13,12 +13,17 @@ export const signInSuccess = user => ({
     payload: user
 })
 
+export const signInFailure = error => ({
+    type: UserActionTypes.SIGN_IN_FAILURE,
+    payload: error
+})
+
 export const signUpSuccess = user => ({
     type: UserActionTypes.SIGN_UP_SUCCESS,
     payload: user
 })
 
-export const signUpStart = userCredentials => ({
+export const signUpStart = (userCredentials) => ({
     type: UserActionTypes.SIGN_UP_START,
     payload: userCredentials
 })

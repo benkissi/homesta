@@ -1,11 +1,14 @@
 import React from 'react'
 
-import { ButtonStyle } from './button-styles'
+import { ButtonStyle, Wrapper } from './button-styles'
 
 
 const Button = (props) => {
     return (
-        < ButtonStyle {...props}>{props.text}</ ButtonStyle>
+        <Wrapper>
+            < ButtonStyle {...props}>{props.text}</ ButtonStyle>
+        </Wrapper>
+
     )
 }
 

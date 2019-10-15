@@ -3,15 +3,18 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
+    position: relative;
 
     > * {
-        margin: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 `
 
 export const ButtonStyle = styled.button`
-    width: ${props => props.width ? props + 'px' : '360px'};
-    background: #ee6984;
+    width: ${props => props.width ? props.width : '360px'};
+    background: ${props => props.bgColor ? props.bgColor : '#ee6984'};
     font: inherit;
     padding: 22px 18px;
     transition: box-shadow 1s;

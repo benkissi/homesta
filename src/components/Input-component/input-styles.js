@@ -3,14 +3,17 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+    width: ${(props) => props.width ? props.width : '100%'};
+    position: relative;
 
     > * {
-        margin: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 `
 
 export const InputField = styled.input`
-    width: ${props => props.width ? props + 'px' : '360px'};
+    width: 100%;
     background: #fff;
     font: inherit;
     border: 1px solid #e8e8e8;

@@ -27,7 +27,7 @@ const Nav = () => {
             <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('about-me')}>About me</NavStyles.Menu></NavStyles.MenuItem>
             <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('portfolio')}>Projects</NavStyles.Menu></NavStyles.MenuItem>
             <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('articles')}>Blog</NavStyles.Menu></NavStyles.MenuItem>
-            <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('contact-me')}>Contact</NavStyles.Menu></NavStyles.MenuItem>
+            <NavStyles.MenuItem><NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu></NavStyles.MenuItem>
         </NavStyles.MobileList>
     )
 
@@ -40,7 +40,7 @@ const Nav = () => {
                 <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('about-me')}>About me</NavStyles.Menu></NavStyles.MenuItem>
                 <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('portfolio')}>Projects</NavStyles.Menu></NavStyles.MenuItem>
                 <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('articles')}>Blog</NavStyles.Menu></NavStyles.MenuItem>
-                <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('contact-me')}>Contact</NavStyles.Menu></NavStyles.MenuItem>
+                <NavStyles.MenuItem><NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu></NavStyles.MenuItem>
             </NavStyles.MenuList>
 
             {/* <NavStyles.MobileMenu>
