@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
+import { signOutStart } from '../../redux/user/user-actions'
+
 import Modal from '../modal/modal-component'
+import UsernameIcon from '../username-icon-component/username-icon-component'
 
-
+import { getInitials } from '../../utils/utility-methods'
 import * as NavStyles from './nav-styles'
 
 
-const Nav = () => {
+const Nav = ({ currentUser, signOut }) => {
     const [isOpen, setModalState] = useState(false)
 
     const toggleModal = () => {
@@ -34,14 +38,21 @@ const Nav = () => {
     return (
         <NavStyles.Wrapper>
             <NavStyles.Logo><img src="../../img/logo.png" /></NavStyles.Logo>
+            <NavStyles.Right>
+                <NavStyles.MenuList>
+                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('home')}>Home</NavStyles.Menu></NavStyles.MenuItem>
+                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('about-me')}>About me</NavStyles.Menu></NavStyles.MenuItem>
+                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('portfolio')}>Projects</NavStyles.Menu></NavStyles.MenuItem>
+                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('articles')}>Blog</NavStyles.Menu></NavStyles.MenuItem>
+                    <NavStyles.MenuItem>{currentUser ? <NavStyles.Menu onClick={signOut}>Sign Out</NavStyles.Menu> : <NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu>}</NavStyles.MenuItem>
+
+                </NavStyles.MenuList>
+                {
+                    currentUser ? <UsernameIcon text={getInitials(currentUser.displayName)} /> : ""
+                }
+
+            </NavStyles.Right>
             <FontAwesomeIcon onClick={toggleModal} id="menu-icon" icon={faBars} size='3x' />
-            <NavStyles.MenuList>
-                <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('home')}>Home</NavStyles.Menu></NavStyles.MenuItem>
-                <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('about-me')}>About me</NavStyles.Menu></NavStyles.MenuItem>
-                <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('portfolio')}>Projects</NavStyles.Menu></NavStyles.MenuItem>
-                <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => handleScroll('articles')}>Blog</NavStyles.Menu></NavStyles.MenuItem>
-                <NavStyles.MenuItem><NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu></NavStyles.MenuItem>
-            </NavStyles.MenuList>
 
             {/* <NavStyles.MobileMenu>
                 <NavStyles.Menu to='/'>Home</NavStyles.Menu>
@@ -51,4 +62,12 @@ const Nav = () => {
     )
 }
 
-export default Nav
+const mapStateToProps = (state) => ({
+    currentUser: state.user.currentUser
+})
+
+const mapDispatchToProps = dispatch => ({
+    signOut: () => dispatch(signOutStart())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)

@@ -7,7 +7,7 @@ const Checkbox = (props) => {
         <Wrapper>
             <Label className="radio">
                 <Input type="checkbox" />
-                <span>For rent by owner</span>
+                <span>{props.label}</span>
             </Label>
         </Wrapper>
     )

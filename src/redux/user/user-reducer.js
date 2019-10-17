@@ -26,6 +26,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 error: action.payload
             }
+        case UserActionTypes.GETTING_USER:
+            return {
+                ...state,
+                gettingUser: action.payload
+            }
         default:
             return state
     }

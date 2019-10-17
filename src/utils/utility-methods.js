@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 export const getObjectArray = (data) => {
-    var array = Object.keys(data).map( (key) => {
+    var array = Object.keys(data).map((key) => {
         return data[key]
     })
 
@@ -9,20 +9,20 @@ export const getObjectArray = (data) => {
 }
 
 export const arrayChunk = (array, chunk) => {
-    if(array.length < 4 || chunk === 1)  return array
+    if (array.length < 4 || chunk === 1) return array
 
     const length = array.length
     let chunkedArray = []
     let size
     let i = 0
-    
-    if(length % chunk === 0) {
-        size = Math.floor(length/chunk)
 
-        while(i < length){
+    if (length % chunk === 0) {
+        size = Math.floor(length / chunk)
+
+        while (i < length) {
             chunkedArray.push(array.slice(i, i += size))
         }
-    }else {
+    } else {
 
         chunk--
         size = Math.floor(length / chunk);
@@ -41,4 +41,11 @@ export const arrayChunk = (array, chunk) => {
 export const getYear = () => {
     // const date = new date()
     return moment().format('YYYY')
+}
+
+export const getInitials = (fullName) => {
+    const names = fullName.split(" ")
+    const firstInitial = names[0].substring(0, 1)
+    const secondInitial = names[1].substring(0, 1)
+    return firstInitial + secondInitial
 }

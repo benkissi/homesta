@@ -5,11 +5,8 @@ export const Wrapper = styled.div`
     justify-content: center;
     width: 100%;
     position: relative;
-
-    > * {
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
+    margin-bottom: 20px;
+    margin-top: 20px;
 `
 
 export const ButtonStyle = styled.button`

@@ -92,3 +92,7 @@ export const Logo = styled.div`
 export const MobileMenu = styled.div`
 
 `
+
+export const Right = styled.div`
+    display: flex;
+`

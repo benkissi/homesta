@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 
 import { googleSignInStart, signUpStart } from '../../redux/user/user-actions'
 
-import Input from '../../components/Input-component/input-component'
-import Button from '../../components/button-component/button-component'
-import Checkbox from '../../components/checkbox-component/checkbox-component'
-import { Wrapper, SignupForm, SocialSignup, Container, Cover, SocialButtons } from './signup-styles'
+import Input from '../Input-component/input-component'
+import Button from '../button-component/button-component'
+import Checkbox from '../checkbox-component/checkbox-component'
+import { Wrapper, SignupForm, SocialSignup, Container, Cover, SocialButtons } from './signin-styles'
 
-const Signup = ({ googleSignInStart, signUpStart }) => {
+const Signin = ({ googleSignInStart, signUpStart }) => {
     const [state, setAppState] = useState({ displayName: '', email: '', password: '' })
 
     const handleSignup = () => {
@@ -81,4 +81,4 @@ const mapDispatchToProps = dispatch => ({
     signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials))
 })
 
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(null, mapDispatchToProps)(Signin)
