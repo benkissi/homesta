@@ -46,7 +46,7 @@ export const SliderContent = styled.div`
     position: relative;
     background-image: url(${props => props.image});
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     height: 100%;
     /* justify-content: center; */
     align-items: center;
@@ -112,7 +112,7 @@ export const Wrapper = styled.div`
     }   
     
     .salutation-text {
-        /* position: relative; */
+        position: relative;
         display: flex; /* Hidden by default */
         justify-content: center;
         align-items: center;
@@ -123,9 +123,8 @@ export const Wrapper = styled.div`
         top: 0;
         width: 100%; /* Full width */
         height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
         background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(31,31,32,0.5); /* Black w/ opacity */
+        background-color: rgba(31,31,32,0.4); /* Black w/ opacity */
     }
 
     @media (max-width: 800px) {

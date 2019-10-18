@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
+    height: fit-content !important;
     position: relative;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -12,6 +13,7 @@ export const Wrapper = styled.div`
 export const ButtonStyle = styled.button`
     width: ${props => props.width ? props.width : '360px'};
     background: ${props => props.bgColor ? props.bgColor : '#ee6984'};
+    height: fit-content;
     font: inherit;
     padding: 22px 18px;
     transition: box-shadow 1s;

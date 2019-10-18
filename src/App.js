@@ -6,7 +6,8 @@ import { checkUserSession } from './redux/user/user-actions'
 
 import Home from './pages/home/home-component'
 import Nav from './components/Nav/nav-component'
-import AgentDashboard from './pages/agent-dashboard/agent-dashboard-component'
+import AgentDashboardRoutes from './layouts/agent-dashboard'
+import AgentListings from './components/agent-listings-component/agent-listings-component'
 
 import './App.scss';
 import Signup from './components/signup-component/signup-component';
@@ -27,9 +28,7 @@ function App({ currentUser, checkUserSession }) {
           currentUser ? <Redirect to='/' /> :
             <Signin />
         )} />
-        <Route path="/dashboard" component={AgentDashboard} />
-
-        )} />
+        <AgentDashboardRoutes path="/dashboard/listings" component={AgentListings} />
         <Route component={withNav} />
       </Switch>
     </Router>

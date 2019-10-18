@@ -46,6 +46,6 @@ export const getYear = () => {
 export const getInitials = (fullName) => {
     const names = fullName.split(" ")
     const firstInitial = names[0].substring(0, 1)
-    const secondInitial = names[1].substring(0, 1)
+    const secondInitial = (names[1] && names[1].substring(0, 1)) || ""
     return firstInitial + secondInitial
 }

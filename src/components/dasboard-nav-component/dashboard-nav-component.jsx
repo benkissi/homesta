@@ -6,16 +6,14 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { signOutStart } from '../../redux/user/user-actions'
 
 import Modal from '../modal/modal-component'
-import * as NavStyles from './nav-styles'
+import UsernameIcon from '../username-icon-component/username-icon-component'
+
+import { getInitials } from '../../utils/utility-methods'
+import * as NavStyles from './dashboard-nav-styles'
 
 
-const Nav = ({ currentUser, signOut }) => {
+const DashboardNav = ({ currentUser, signOut }) => {
     const [isOpen, setModalState] = useState(false)
-    const [navBg, setNavBg] = useState("transparent")
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
-    })
 
     const toggleModal = () => {
         setModalState(!isOpen)
@@ -25,23 +23,6 @@ const Nav = ({ currentUser, signOut }) => {
         const elemnt = document.getElementById(to)
         if (elemnt)
             elemnt.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    }
-
-    const handleScroll = () => {
-        const scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
-        const winheight = window.innerHeight || (document.documentElement || document.body).clientHeight
-        const documentHeight = Math.max(
-            document.body.scrollHeight, document.documentElement.scrollHeight,
-            document.body.offsetHeight, document.documentElement.offsetHeight,
-            document.body.clientHeight, document.documentElement.clientHeight
-        )
-        const trackLength = documentHeight - winheight
-        const percentageScrolled = Math.floor(scrollTop / trackLength * 100) // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
-        if (percentageScrolled > 24) {
-            setNavBg("solid")
-        } else {
-            setNavBg("transparent")
-        }
     }
 
     const content = (
@@ -55,20 +36,22 @@ const Nav = ({ currentUser, signOut }) => {
     )
 
     return (
-        <NavStyles.Wrapper background={navBg}>
+        <NavStyles.Wrapper>
             <NavStyles.Logo><img src="../../img/logo.png" /></NavStyles.Logo>
             <NavStyles.Right>
                 <NavStyles.MenuList>
-                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('home')}>Home</NavStyles.Menu></NavStyles.MenuItem>
-                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('about-me')}>About me</NavStyles.Menu></NavStyles.MenuItem>
-                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('portfolio')}>Projects</NavStyles.Menu></NavStyles.MenuItem>
-                    <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('articles')}>Blog</NavStyles.Menu></NavStyles.MenuItem>
                     <NavStyles.MenuItem>{currentUser ? <NavStyles.Menu onClick={signOut}>Sign Out</NavStyles.Menu> : <NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu>}</NavStyles.MenuItem>
-
                 </NavStyles.MenuList>
+                {
+                    currentUser ? <UsernameIcon text={getInitials(currentUser.displayName)} /> : ""
+                }
 
             </NavStyles.Right>
             <FontAwesomeIcon onClick={toggleModal} id="menu-icon" icon={faBars} size='3x' />
+
+            {/* <NavStyles.MobileMenu>
+                <NavStyles.Menu to='/'>Home</NavStyles.Menu>
+            </NavStyles.MobileMenu> */}
             <Modal toggle={toggleModal} open={isOpen} content={content} />
         </NavStyles.Wrapper>
     )
@@ -82,4 +65,4 @@ const mapDispatchToProps = dispatch => ({
     signOut: () => dispatch(signOutStart())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardNav)

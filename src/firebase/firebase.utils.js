@@ -14,6 +14,8 @@ var firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
+export const auth = firebase.auth()
+export const firestore = firebase.firestore()
 
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -41,8 +43,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     return userRef
 }
 
-export const auth = firebase.auth()
-export const firestore = firebase.firestore()
 
 const provider = new firebase.auth.GoogleAuthProvider();
 

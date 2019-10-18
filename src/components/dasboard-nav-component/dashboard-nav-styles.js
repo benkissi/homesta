@@ -2,16 +2,17 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const Wrapper = styled.div`
-    background: ${props => props.background === "solid" ? "#1f1f20" : "none"};
+    background: white;
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    font-weight: ${props => props.background === "solid" ? "normal" : "bold"};
+    font-weight: normal;
     padding-top: 10px;
     position: fixed;
     top: 0;
     z-index:10;
+    border-bottom: 1px solid #e8e8e8;
 
     #menu-icon {
         display: none;
@@ -33,7 +34,7 @@ export const Wrapper = styled.div`
 
 export const Menu = styled(Link)`
     text-decoration: none;
-    color: white;
+    color: black;
     :hover {
         color: #8490ff;
     }
@@ -96,4 +97,8 @@ export const MobileMenu = styled.div`
 
 export const Right = styled.div`
     display: flex;
+
+    >:last-child {
+        margin-right: 10px;
+    }
 `
