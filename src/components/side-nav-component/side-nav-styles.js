@@ -12,8 +12,6 @@ export const Wrapper = styled.div`
     background: white;
     border-right: 1px solid #e8e8e8;
     padding: 20px 0 0 20px;
-
-     
 `
 
 export const Logo = styled.div`

@@ -14,8 +14,14 @@ const Nav = ({ currentUser, signOut }) => {
     const [navBg, setNavBg] = useState("transparent")
 
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll, false)
     })
+
+    useEffect(() => {
+        return () => {
+            window.removeEventListener('scroll', handleScroll, false)
+        }
+    }, [])
 
     const toggleModal = () => {
         setModalState(!isOpen)
@@ -63,7 +69,7 @@ const Nav = ({ currentUser, signOut }) => {
                     <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('about-me')}>About me</NavStyles.Menu></NavStyles.MenuItem>
                     <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('portfolio')}>Projects</NavStyles.Menu></NavStyles.MenuItem>
                     <NavStyles.MenuItem><NavStyles.Menu to='/' onClick={() => onMenuClick('articles')}>Blog</NavStyles.Menu></NavStyles.MenuItem>
-                    <NavStyles.MenuItem>{currentUser ? <NavStyles.Menu onClick={signOut}>Sign Out</NavStyles.Menu> : <NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu>}</NavStyles.MenuItem>
+                    <NavStyles.MenuItem>{currentUser ? <NavStyles.Menu to="#" onClick={signOut}>Sign Out</NavStyles.Menu> : <NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu>}</NavStyles.MenuItem>
 
                 </NavStyles.MenuList>
 

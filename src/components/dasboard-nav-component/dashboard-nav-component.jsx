@@ -40,7 +40,7 @@ const DashboardNav = ({ currentUser, signOut }) => {
             <NavStyles.Logo><img src="../../img/logo.png" /></NavStyles.Logo>
             <NavStyles.Right>
                 <NavStyles.MenuList>
-                    <NavStyles.MenuItem>{currentUser ? <NavStyles.Menu onClick={signOut}>Sign Out</NavStyles.Menu> : <NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu>}</NavStyles.MenuItem>
+                    <NavStyles.MenuItem>{currentUser ? <NavStyles.Menu to="#" onClick={signOut}>Sign Out</NavStyles.Menu> : <NavStyles.Menu to='/sign-up'>Sign Up</NavStyles.Menu>}</NavStyles.MenuItem>
                 </NavStyles.MenuList>
                 {
                     currentUser ? <UsernameIcon text={getInitials(currentUser.displayName)} /> : ""
@@ -48,10 +48,6 @@ const DashboardNav = ({ currentUser, signOut }) => {
 
             </NavStyles.Right>
             <FontAwesomeIcon onClick={toggleModal} id="menu-icon" icon={faBars} size='3x' />
-
-            {/* <NavStyles.MobileMenu>
-                <NavStyles.Menu to='/'>Home</NavStyles.Menu>
-            </NavStyles.MobileMenu> */}
             <Modal toggle={toggleModal} open={isOpen} content={content} />
         </NavStyles.Wrapper>
     )

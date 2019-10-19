@@ -4,10 +4,13 @@ import { connect } from 'react-redux'
 
 import { checkUserSession } from './redux/user/user-actions'
 
-import Home from './pages/home/home-component'
+import Home from './pages/home/home-page'
 import Nav from './components/Nav/nav-component'
-import AgentDashboardRoutes from './layouts/agent-dashboard'
-import AgentListings from './components/agent-listings-component/agent-listings-component'
+import AgentDashboardRoutes from './layouts/agent-dashboard/agent-dashboard-routes'
+import AgentListings from './pages/agent-dashboard/agent-listings-page/agent-listings-component'
+import WithNavRoutes from './layouts/with-nav/with-nav-routes'
+import ErrorBoundary from './components/error-boundary/error-boundary-component'
+import PageNotFound from './pages/404/404-page'
 
 import './App.scss';
 import Signup from './components/signup-component/signup-component';
@@ -19,31 +22,29 @@ function App({ currentUser, checkUserSession }) {
   }, [checkUserSession])
   return (
     <Router>
-      <Switch>
-        <Route path="/sign-up" render={() => (
-          currentUser ? <Redirect to='/' /> :
-            <Signup />
-        )} />
-        <Route path="/sign-in" render={() => (
-          currentUser ? <Redirect to='/' /> :
-            <Signin />
-        )} />
-        <AgentDashboardRoutes path="/dashboard/listings" component={AgentListings} />
-        <Route component={withNav} />
-      </Switch>
+      <ErrorBoundary>
+        <Switch>
+
+          <Route path="/sign-up" render={() => (
+            currentUser ? <Redirect to='/' /> :
+              <Signup />
+          )} />
+          <Route path="/sign-in" render={() => (
+            currentUser ? <Redirect to='/' /> :
+              <Signin />
+          )} />
+          <WithNavRoutes exact path="/" component={Home} />
+          <AgentDashboardRoutes exact path="/dashboard/listings" component={AgentListings} />
+
+          <Route path="*" component={PageNotFound} />
+
+        </Switch>
+      </ErrorBoundary>
     </Router>
   );
 }
 
-const withNav = () => {
-  return (
-    <div>
-      <Nav />
-      <Route exact path="/" component={Home} />
-    </div>
-  )
 
-}
 
 const mapStateToProps = state => ({
   currentUser: state.user.currentUser

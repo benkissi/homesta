@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import AgentDashboard from '../pages/agent-dashboard/agent-dashboard-component'
+import AgentDashboard from './agent-dashboard-component'
 
 const AgentDashboardRoutes = ({ component: Component, ...rest }) => {
     return (

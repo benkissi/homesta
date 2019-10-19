@@ -9,7 +9,6 @@ const SideNav = (props) => {
             <MenuContent>
                 {props.children}
             </MenuContent>
-
         </Wrapper>
     )
 }
