@@ -5,7 +5,7 @@ import { ButtonStyle, Wrapper } from './button-styles'
 
 const Button = (props) => {
     return (
-        <Wrapper>
+        <Wrapper margin={props.margin}>
             < ButtonStyle {...props}>{props.text}</ ButtonStyle>
         </Wrapper>
 

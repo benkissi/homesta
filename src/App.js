@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { checkUserSession } from './redux/user/user-actions'
 
 import Home from './pages/home/home-page'
-import Nav from './components/Nav/nav-component'
 import AgentDashboardRoutes from './layouts/agent-dashboard/agent-dashboard-routes'
 import AgentListings from './pages/agent-dashboard/agent-listings-page/agent-listings-component'
 import WithNavRoutes from './layouts/with-nav/with-nav-routes'

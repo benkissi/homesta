@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     padding-top: 10px;
     position: fixed;
     top: 0;
-    z-index:10;
+    z-index:1;
     border-bottom: 1px solid #e8e8e8;
 
     #menu-icon {
@@ -62,6 +62,7 @@ export const MobileList = styled.div`
     margin-top: 0;
     display: flex;
     padding: 10px;
+    border: 1px solid #888;
 `
 
 export const MenuItem = styled.div`

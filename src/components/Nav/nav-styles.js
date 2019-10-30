@@ -61,6 +61,7 @@ export const MobileList = styled.div`
     margin-top: 0;
     display: flex;
     padding: 10px;
+    border: 1px solid #888;
 `
 
 export const MenuItem = styled.div`

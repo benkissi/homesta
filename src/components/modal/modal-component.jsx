@@ -11,10 +11,25 @@ const Modal = (props) => {
 
     }
 
+    let width = () => {
+        switch (props.width) {
+            case 'small':
+                return '40%'
+            case 'medium':
+                return '60%'
+            case 'large':
+                return '80%'
+            default:
+                return '40%'
+        }
+    }
+
+
+
     return (
         <ModalStyles.Wrapper onClick={handleToggle} open={props.open} id="myModal" className="modal">
 
-            <ModalStyles.Content className="modal-content">
+            <ModalStyles.Content width={width()} className="modal-content">
                 {props.content}
             </ModalStyles.Content>
 

@@ -3,11 +3,11 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: auto;
     height: fit-content !important;
     position: relative;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-bottom: ${props => props.margin ? props.margin : '20px'};
+    margin-top: ${props => props.margin ? props.margin : '20px'};
 `
 
 export const ButtonStyle = styled.button`
@@ -15,7 +15,7 @@ export const ButtonStyle = styled.button`
     background: ${props => props.bgColor ? props.bgColor : '#ee6984'};
     height: fit-content;
     font: inherit;
-    padding: 22px 18px;
+    padding: ${props => props.padding ? props.padding : '22px 18px'};
     transition: box-shadow 1s;
     outline: 0;
     color: white;

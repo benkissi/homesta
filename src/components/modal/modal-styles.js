@@ -16,9 +16,8 @@ export const Wrapper = styled.div`
 export const Content = styled.div`
     background-color: none;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 40%;
+    padding: 5px;
+    width: ${(props) => props.width ? props.width : "40%"};
 
     .close {
         color: #aaaaaa;

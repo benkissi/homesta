@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 3;
     background: white;
     border-right: 1px solid #e8e8e8;
     padding: 20px 0 0 20px;

@@ -5,17 +5,23 @@ const INITIAL_STATE = {
     featured: null,
     mostViewed: null,
     agent: null,
-    loading: null,
+    addingListing: null,
+    gettingListings: null,
+    makingSearch: null,
     error: null
 }
 
 const ListingsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case ListingsActionTypes.GET_LISTINGS_START:
-        case ListingsActionTypes.ADDING_LISTING_START:
+        case ListingsActionTypes.SET_LOADING_STATE:
             return {
                 ...state,
-                loading: true
+                loading: action.payload
+            }
+        case ListingsActionTypes.ADDING_LISTING_SUCCESS:
+            return {
+                ...state,
+                loading: false
             }
         case ListingsActionTypes.GET_AGENT_LISTINGS_SUCCESS:
             return {
@@ -28,6 +34,7 @@ const ListingsReducer = (state = INITIAL_STATE, action) => {
                 search: action.payload
             }
         case ListingsActionTypes.GET_LISTINGS_FAILURE:
+        case ListingsActionTypes.ADDING_LISTING_FAILURE:
             return {
                 ...state,
                 error: action.payload

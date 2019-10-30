@@ -49,3 +49,12 @@ export const getInitials = (fullName) => {
     const secondInitial = (names[1] && names[1].substring(0, 1)) || ""
     return firstInitial + secondInitial
 }
+
+export const truncateString = (string, limit) => {
+    if (string.length > limit) {
+        const shortString = string.substring(0, limit) + '...'
+        return shortString
+    }
+
+    return string
+}

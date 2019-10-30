@@ -1,12 +1,13 @@
 import ListingsActionTypes from './listings-types'
 
-export const addingListingStart = () => ({
-    type: ListingsActionTypes.ADDING_LISTING_START
+export const addingListingStart = details => ({
+    type: ListingsActionTypes.ADDING_LISTING_START,
+    payload: details
 })
 
-export const addingListingSuccess = listing => ({
+export const addingListingSuccess = agentId => ({
     type: ListingsActionTypes.ADDING_LISTING_SUCCESS,
-    payload: listing
+    payload: agentId
 })
 
 export const addingListingFailure = error => ({
@@ -14,8 +15,9 @@ export const addingListingFailure = error => ({
     payload: error
 })
 
-export const gettingListingsStart = () => ({
-    type: ListingsActionTypes.GET_LISTINGS_START
+export const gettingListingsStart = agentId => ({
+    type: ListingsActionTypes.GET_LISTINGS_START,
+    payload: agentId
 })
 
 export const searchListingsStart = searchParams => ({
@@ -36,5 +38,10 @@ export const gettingAgentListingsSuccess = listings => ({
 export const gettingListingsFailure = error => ({
     type: ListingsActionTypes.GET_LISTINGS_FAILURE,
     payload: error
+})
+
+export const setLoadingState = loadingState => ({
+    type: ListingsActionTypes.SET_LOADING_STATE,
+    payload: loadingState
 })
 

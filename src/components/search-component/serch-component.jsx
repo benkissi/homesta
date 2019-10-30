@@ -14,10 +14,10 @@ const Search = () => {
     return (
         <Wrapper>
             <SearchControls>
-                <RadioInput />
-                <DataList uid="propertyTypes" data={propertyTypes} placeholder="Type" width="200" />
+                {/* <RadioInput /> */}
+                <DataList uid="propertyTypes" data={propertyTypes} placeholder="Type" width="200px" />
                 <Input placeholder="Location" width="600px" />
-                <DataList uid="rentPeriods" data={rentPeriods} placeholder="Rent period" width="200" />
+                <DataList uid="rentPeriods" data={rentPeriods} placeholder="Rent period" width="200px" />
             </SearchControls>
 
             <SearchControls>

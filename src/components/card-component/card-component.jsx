@@ -1,27 +1,50 @@
 import React from 'react'
-import { Wrapper, Details, SubDetails } from './card-styles'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShower, faBed, faMapMarkerAlt, faDollarSign, faRedoAlt, faEye, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
+
+import { truncateString } from '../../utils/utility-methods'
+
+import { Wrapper, Details, SubDetails, Title, Desc, Price, Image } from './card-styles'
+
 
 const Card = (props) => {
     return (
         <Wrapper width={props.width} className="card">
-            <div className="card-image">
-                <img src={props.image} />
-            </div>
+            <Image image={props.image}>
+            </Image>
             <Details>
-                <div>
+                <Title>
                     <h3>{props.title}</h3>
-                </div>
-                <div>
+                </Title>
+                <Desc>
                     <p>
-                        {props.description}
+                        {truncateString(props.description, 150)}
                     </p>
-                </div>
+                </Desc>
+                {
+                    props.price ? <Price><FontAwesomeIcon icon={faDollarSign} color="#69eed3" />: {props.price}</Price> : ''
+                }
                 <SubDetails >
-                    <div><p>Location: {props.location}</p></div>
-                    <div><p>Price: {props.price}</p></div>
+                    <div><FontAwesomeIcon icon={faMapMarkerAlt} color="#ee6984" /> :{props.location}</div>
+                    <div><FontAwesomeIcon icon={faBed} color="#ee6984" /> :{props.rooms}</div>
+
                 </SubDetails>
+                <SubDetails >
+                    <div><FontAwesomeIcon icon={faShower} color="#ee6984" /> :{props.baths}</div>
+                    <div><FontAwesomeIcon icon={faRedoAlt} color="#ee6984" /> :{props.type}</div>
+
+                </SubDetails>
+                {
+                    props.views ?
+                        <SubDetails >
+                            <div><FontAwesomeIcon icon={faEye} color="#ee6984" /> :{props.views}</div>
+                            <div><FontAwesomeIcon icon={faPhoneAlt} color="#ee6984" /> :{props.phone}</div>
+                        </SubDetails>
+                        : ''
+                }
             </Details>
-        </Wrapper>
+        </Wrapper >
     )
 }
 
