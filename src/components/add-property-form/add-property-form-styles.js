@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
     flex-direction: column;
     padding: 20px;
     background: white;
+    position: relative;
+    width: 100%;
 
     .error-message {
         color: red;
@@ -29,6 +31,7 @@ export const BlockDetail = styled.div`
 
 export const ThumbnailHolder = styled.div`
     display: flex;
+    width: 100%;
 `
 
 export const ThumbnailCard = styled.div`
@@ -41,6 +44,29 @@ export const ThumbnailCard = styled.div`
     width: 15%;
     height: auto;
     margin: 10px;
+    position: relative;
+
+    #overlay{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        z-index:10;
+    }
+
+    :hover{
+        #overlay{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    }
 `
 export const ThumbnailImage = styled.img`
     width: 100%;

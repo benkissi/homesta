@@ -20,8 +20,6 @@ const AgentDashboard = props => {
                     <SideNav>
                         <ul>
                             <li>Listings</li>
-                            <li>Propspects</li>
-                            <li>Analytics</li>
                             <li>Settings</li>
                         </ul>
                     </SideNav>

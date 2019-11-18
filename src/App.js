@@ -7,6 +7,7 @@ import { checkUserSession } from './redux/user/user-actions'
 import Home from './pages/home/home-page'
 import AgentDashboardRoutes from './layouts/agent-dashboard/agent-dashboard-routes'
 import AgentListings from './pages/agent-dashboard/agent-listings-page/agent-listings-component'
+import PropertyPage from './pages/agent-dashboard/property-page/property-page-component'
 import WithNavRoutes from './layouts/with-nav/with-nav-routes'
 import ErrorBoundary from './components/error-boundary/error-boundary-component'
 import PageNotFound from './pages/404/404-page'
@@ -34,6 +35,7 @@ function App({ currentUser, checkUserSession }) {
           )} />
           <WithNavRoutes exact path="/" component={Home} />
           <AgentDashboardRoutes exact path="/dashboard/listings" component={AgentListings} />
+          <AgentDashboardRoutes exact path="/dashboard/listings/:id" component={PropertyPage} />
 
           <Route path="*" component={PageNotFound} />
 

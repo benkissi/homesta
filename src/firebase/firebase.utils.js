@@ -95,10 +95,17 @@ export const getListings = async (agentId) => {
         const collectionRef = firestore.collection('listings')
         console.log('referrence', collectionRef)
         const querySnapshot = await collectionRef.where('userId', '==', agentId).get()
+        // var key = Object.keys(querySnapshot.val())[0];
         console.log('querySnapshot', querySnapshot)
         querySnapshot.docs.forEach(async (item) => {
-            console.log('item', await item.data())
-            listings.push(item.data())
+            const data = await item.data()
+            const listing = {
+                id: item.id,
+                ...data
+
+            }
+            console.log('item', listing)
+            listings.push(listing)
         })
         return listings
 

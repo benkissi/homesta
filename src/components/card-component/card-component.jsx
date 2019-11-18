@@ -9,8 +9,9 @@ import { Wrapper, Details, SubDetails, Title, Desc, Price, Image } from './card-
 
 
 const Card = (props) => {
+
     return (
-        <Wrapper width={props.width} className="card">
+        <Wrapper onClick={props.click} width={props.width} className="card">
             <Image image={props.image}>
             </Image>
             <Details>

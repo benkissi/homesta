@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useRouteMatch, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Button from '../../../components/button-component/button-component'
@@ -12,6 +13,7 @@ import { addingListingStart, gettingListingsStart } from '../../../redux/listing
 import { EmptyState, Wrapper, ActionBar, ListingsContainer } from './agent-listings-styles'
 
 const AgentListings = ({ agentListings, addingListing, currentUser, getListings }) => {
+    let history = useHistory()
     const [state, setState] = useState({})
 
     useEffect(() => {
@@ -35,7 +37,12 @@ const AgentListings = ({ agentListings, addingListing, currentUser, getListings 
         addingListing(details)
     }
 
+    const cardClick = (listing) => {
+        history.push(`${url}/${listing.id}`, { ...listing })
+    }
+
     const cardSize = '30%'
+    let { path, url } = useRouteMatch();
 
     return (
         <Wrapper>
@@ -54,8 +61,8 @@ const AgentListings = ({ agentListings, addingListing, currentUser, getListings 
                     </EmptyState> :
                     (
                         <ListingsContainer>{agentListings.map((listing, index) =>
-
                             <Card
+                                click={() => cardClick(listing)}
                                 key={index}
                                 image={listing.images[0]}
                                 title={listing.title}
@@ -68,8 +75,6 @@ const AgentListings = ({ agentListings, addingListing, currentUser, getListings 
                                 type={listing.type}
                                 width={cardSize}
                             />
-
-
                         )}
                         </ListingsContainer>
                     )

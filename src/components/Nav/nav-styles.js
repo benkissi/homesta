@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     padding-top: 10px;
     position: fixed;
     top: 0;
-    z-index:10;
+    z-index:5;
 
     #menu-icon {
         display: none;

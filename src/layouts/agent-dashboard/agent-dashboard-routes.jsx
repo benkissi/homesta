@@ -5,6 +5,7 @@ import AgentDashboard from './agent-dashboard-component'
 
 const AgentDashboardRoutes = ({ component: Component, ...rest }) => {
     return (
+
         <Route {...rest} render={props => (
             <AgentDashboard>
                 <Component {...props} />

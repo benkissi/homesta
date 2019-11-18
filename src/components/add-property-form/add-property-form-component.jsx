@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Input from '../Input-component/input-component'
 import DataList from '../datalist-component/datalist-component'
 import Button from '../button-component/button-component'
 import TextArea from '../text-area-component/text-area-component'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import { Wrapper, Detail, BlockDetail, ThumbnailHolder, ThumbnailImage, ThumbnailCard } from './add-property-form-styles'
 
@@ -21,15 +24,23 @@ const AddPropertyForm = (props) => {
         images: []
     })
 
-    const [optionalFields, setOptionalFields] = useState({
-        period: ''
-    })
-
     const [listingImages, setImages] = useState([])
 
     const [fieldsStatus, setFieldsStatus] = useState({
         emptyFields: false
     })
+
+    const [optionalFields, setOptionalFields] = useState({
+        period: ''
+    })
+
+    useEffect(() => {
+        if (props.data) {
+            const { period, ...rest } = props.data
+            setRequiredFields({ ...rest })
+            setOptionalFields({ period })
+        }
+    }, [props.data])
 
     const handleButtonClick = () => {
         setFieldsStatus({
@@ -41,8 +52,19 @@ const AddPropertyForm = (props) => {
         const files = fileInput.files
         console.log('files', files)
 
-        const isEmpty = Object.values(requiredFields).some(x => (x === null || x === ''))
+        let isEmpty
+        if (props.mode !== 'edit') {
+            isEmpty = Object.values(requiredFields).some(x => (x === null || x === ''))
+        } else {
+            const keys = Object.keys(requiredFields).filter(key => key !== 'images' && key !== 'period')
+            console.log(keys)
+            isEmpty = keys.some(key => {
+                console.log(requiredFields[key], key)
+                return requiredFields[key] === ''
+            })
+        }
 
+        console.log('isEmpty', isEmpty)
         if (numberOfFiles > 10) {
             alert("You can upload a maximum of 10 images")
             return
@@ -64,7 +86,6 @@ const AddPropertyForm = (props) => {
 
         const fileInput = document.getElementById('img-upload')
         const fileLength = fileInput.files.length
-        const files = fileInput.files
 
         if (e.target.name === 'images') {
             let imageUrls = []
@@ -90,7 +111,7 @@ const AddPropertyForm = (props) => {
             setRequiredFields(requiredFields => {
                 return {
                     ...requiredFields,
-                    images: files
+                    images: requiredFields.images.concat(files)
                 }
             })
 
@@ -110,10 +131,32 @@ const AddPropertyForm = (props) => {
         }
 
     }
+
+    const removeImage = (index) => {
+        const imgs = requiredFields.images
+        console.log('image array', imgs)
+        if (imgs) {
+            imgs.splice(index, 1)
+            setRequiredFields({
+                ...requiredFields,
+                images: imgs
+            })
+        }
+    }
+
+    const removeNewImage = (index) => {
+        const imgs = listingImages
+        console.log('image array', imgs)
+        if (imgs) {
+            imgs.splice(index, 1)
+            setImages([...imgs])
+        }
+    }
+
     return (
         <Wrapper>
             <div>
-                <h3>Add Property Details</h3><span>
+                <h3>{props.formTitle ? props.formTitle : 'Add Property'}</h3><span>
                     {fieldsStatus.emptyFields ?
                         <p className="error-message"> Fields marked with * are required</p>
                         : ""
@@ -182,18 +225,33 @@ const AddPropertyForm = (props) => {
             <Detail>
                 <ThumbnailHolder>
                     {
+                        props.mode === 'edit' ?
+                            props.data.images.length > 0 ?
+                                props.data.images.map((item, index) => (
+                                    <ThumbnailCard key={index}>
+                                        <div id="overlay" onClick={() => removeImage(index)}>
+                                            <FontAwesomeIcon icon={faTimes} color="#ee6984" size='3x' />
+                                        </div>
+                                        <ThumbnailImage key={index} alt="thumbnail" src={item} />
+                                    </ThumbnailCard>
+                                )) : '' : ''
 
+                    }
+                    {
                         listingImages.length > 0 ?
                             listingImages.map((item, index) => (
                                 <ThumbnailCard key={index}>
+                                    <div id="overlay" onClick={() => removeNewImage(index)}>
+                                        <FontAwesomeIcon icon={faTimes} color="#ee6984" size='3x' />
+                                    </div>
                                     <ThumbnailImage key={index} alt="thumbnail" src={item} />
                                 </ThumbnailCard>
-                            )) : ""
+                            )) : ''
                     }
                 </ThumbnailHolder>
             </Detail>
             <Detail>
-                <Button onClick={handleButtonClick} text="Add Property" bgColor="#69eed3" />
+                <Button onClick={handleButtonClick} text={props.actionText ? props.actionText : "Add Property"} bgColor="#69eed3" />
             </Detail>
 
         </Wrapper>
